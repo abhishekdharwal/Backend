@@ -8,6 +8,7 @@ const PORT = process.env.PORT || 5500;
 const MovieUser = require("./models/user-model");
 const { initializingPassport } = require("./passportConfig");
 const expressSession = require("express-session");
+var cors = require("cors");
 
 DbConnect();
 initializingPassport(passport);
@@ -17,6 +18,7 @@ app.use(
     extended: true,
   })
 );
+app.use(cors())
 app.use(
   expressSession({ secret: "secret", resave: false, saveUninitialized: false })
 );
